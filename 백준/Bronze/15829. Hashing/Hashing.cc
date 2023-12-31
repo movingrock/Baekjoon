@@ -12,10 +12,12 @@ int main() {
 	string s;
 	cin >> n >> s;
 	long long sum = 0;
-	int digit = 0;
+	long long r = 1;
+	long long M = 1234567891;
 	for (int i = 0; i < n; i++) {
-		sum += (s[i] - 'a' + 1) * pow(31, digit);
-		digit++;
+		sum += (((s[i] - 'a' + 1) * r) % M);
+		sum %= M;
+		r = (r * 31) % M;
 	}
 
 	cout << sum;
