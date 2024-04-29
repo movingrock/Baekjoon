@@ -8,11 +8,12 @@ char arr[5] = {'A', 'E', 'I', 'O', 'U'};
 int answer = 0;
 
 void backtracking(string str, string word){
-    cnt++;
      if(str == word){
         answer = cnt;
         return;
     }
+    cnt++;
+    
     if(str.length() >= 5){
         return;
     }
@@ -28,5 +29,5 @@ int solution(string word) {
     
     backtracking(str, word);
     
-    return answer-1;
+    return answer;
 }
