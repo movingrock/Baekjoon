@@ -15,6 +15,7 @@ int answer = 0;
 
 void bfs(){
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> q;
+    
     for(int i = 0; i<v[0].size(); i++){
         q.push({v[0][i].second, v[0][i].first});
     }
