@@ -1,28 +1,28 @@
 #include <string>
 #include <vector>
 #include <unordered_set>
+#include <iostream>
 
 using namespace std;
 
 int solution(int N, int number) {
     int answer = -1;
     
-    unordered_set<int> s[8];
+    unordered_set<int> s[9];
     
     int sum = 0;
     // n , nn, nnn 넣기
-    for(int i = 0; i < 8; ++i){
+    for(int i = 1; i <= 8; i++){
         sum = 10*sum + N;
         s[i].insert(sum);
     }
     
-    // s[i] = s
-    // i가 7이면 j는 0~6
-    // 3이면 3, 0 + 2 , 1 + 1, 2 + 0 이 필요
-    for (int i = 1; i < 8; ++i){
-        for(int j = 0; j < i; ++j){
+    // i가 7이면 j는 1~6
+    // 7 1+6 2+5 3+4 4+3 5+2 6+1
+    for (int i = 1; i <= 8; i++){
+        for(int j = 1; j < i; j++){
             for(int a : s[j]){
-                for(int b : s[i-j-1]){
+                for(int b : s[i-j]){
                     s[i].insert(a+b);
                     s[i].insert(a-b);
                     s[i].insert(a*b);
@@ -35,11 +35,12 @@ int solution(int N, int number) {
     
     
     // 찾아주기
-    for(int i = 0; i < 8; ++i){
+    for(int i = 1; i <= 8; i++){
         if(s[i].find(number) != s[i].end()){
-            answer = i + 1;
+            answer = i;
             break;
         }  
     }
+    
     return answer;
 }
