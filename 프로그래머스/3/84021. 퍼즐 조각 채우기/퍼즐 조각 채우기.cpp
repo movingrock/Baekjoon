@@ -98,7 +98,7 @@ void Func(){
                 answer += a.size();
                 used[i] = true;
                 flag = true;
-                cout << a.size() << endl;
+
                 break;
             }
             if(flag) break;
