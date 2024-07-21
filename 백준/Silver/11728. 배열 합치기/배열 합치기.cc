@@ -9,16 +9,34 @@ int main() {
 
 	int n, m;
 	cin >> n >> m;
-	//vector<int> a(n);
-	//vector<int> b(m);
-	vector<int> answer(n + m);
-	for (int i = 0; i < n + m; i++) {
-		cin >> answer[i];
+	vector<int> a(n);
+	vector<int> b(m);
+	vector<int> answer(n+m);
+
+	for (int i = 0; i < n; i++) {
+		cin >> a[i];
 	}
 
-	sort(answer.begin(), answer.end());
+	for (int i = 0; i < m; i++) {
+		cin >> b[i];
+	}
 
-	for (int i = 0; i < n + m; i++) {
+	sort(a.begin(), a.end());
+	sort(b.begin(), b.end());
+
+	int pa = 0;
+	int pb = 0;
+	int index = 0;
+
+	while (pa < n && pb < m) {
+		if (a[pa] < b[pb]) answer[index++] = a[pa++];
+		else answer[index++] = b[pb++];
+	}
+
+	while (pa < n) answer[index++] = a[pa++];
+	while (pb < m) answer[index++] = b[pb++];
+
+	for (int i = 0; i < answer.size(); i++) {
 		cout << answer[i] << " ";
 	}
 
