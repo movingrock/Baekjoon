@@ -26,8 +26,6 @@ vector<int> longestCommonSubsequence(vector<int>& A, vector<int>& B) {
                     dp[i][j] = tmp;
                     dp[i][j].push_back(A[i - 1]);
                 }
-
-                //dp[i][j].push_back(A[i - 1]);
             }
             else {
                 if (dp[i - 1][j] > dp[i][j - 1]) {
@@ -39,17 +37,6 @@ vector<int> longestCommonSubsequence(vector<int>& A, vector<int>& B) {
             }
         }
     }
-
-    //for (int i = 0; i <= N; i++) {
-    //    for (int j = 0; j <= M; j++) {
-    //        for (int k = 0; k < dp[i][j].size(); k++) {
-    //            cout << dp[i][j].size();
-    //            //cout << dp[i][j][k];
-    //        }
-    //        cout << " ";
-    //    }
-    //    cout << endl;
-    //}
 
     return dp[N][M];
 }
@@ -80,6 +67,3 @@ int main() {
 
 	return 0;
 }
-
-
-
